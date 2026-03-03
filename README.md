@@ -5,7 +5,7 @@ Frontent for the [Fake Data Generator](https://github.com/arturomorarioja/fake_i
 
 ## Installation
 
-The backend is expected to be running at `http://localhost/php_fake_info`, but this value can be changed at `info.js`.
+The backend is expected to be running at `http://localhost:8080`, but this value can be changed at `js/info.js`.
 
 ## Tools
 JavaScript / CSS3 / HTML5
