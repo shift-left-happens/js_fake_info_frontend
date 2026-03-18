@@ -1,0 +1,27 @@
+{
+  "name": "js_fake_info_frontend",
+  "version": "1.0.0",
+  "description": "Frontent for the [Fake Data Generator](https://github.com/arturomorarioja/fake_info), which generates fake data of nonexistent Danish persons.",
+  "main": "index.js",
+  "scripts": {
+    "serve": "npx serve",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:codegen": "npx playwright codegen http://localhost:3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shift-left-happens/js_fake_info_frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/shift-left-happens/js_fake_info_frontend/issues"
+  },
+  "homepage": "https://github.com/shift-left-happens/js_fake_info_frontend#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
