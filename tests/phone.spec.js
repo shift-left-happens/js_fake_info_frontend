@@ -9,4 +9,5 @@ test('generated CPR matches gender rule', async ({ page }) => {
     const phoneNumber = await fakePage.phoneNumberValues.first().innerText();
 
     // CPR must be exactly 10 digits
+    expect(phoneNumber).toMatch(/^\d{8}$/);
 });
