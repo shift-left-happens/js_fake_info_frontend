@@ -1,17 +1,16 @@
 import { test, expect } from '@playwright/test';
+import { FakeDataPage } from './pages/FakeDataPage.js';
 
 test('generated CPR matches gender rule', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  const fakePage = new FakeDataPage(page);
+  await fakePage.goto();
+  await fakePage.generateButton.click();
 
-  await page.getByRole('button', { name: 'Generate' }).click();
-
-  const genderText = await page.locator('.genderValue').innerText();
-  const cprText = await page.locator('.cprValue').innerText();
+  const genderText = await fakePage.genderValues.first().innerText();
+  const cprText = await fakePage.cprValues.first().innerText();
 
   const gender = genderText.trim().toLowerCase();
   const cpr = cprText.trim();
-
-  console.log({ gender, cpr });
 
   // CPR must be exactly 10 digits
   expect(cpr).toMatch(/^\d{10}$/);
