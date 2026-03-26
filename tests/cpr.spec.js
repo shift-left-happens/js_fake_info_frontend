@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 
 test('generated CPR matches gender rule', async ({ page }) => {
