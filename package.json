@@ -4,6 +4,7 @@
   "description": "Frontent for the [Fake Data Generator](https://github.com/arturomorarioja/fake_info), which generates fake data of nonexistent Danish persons.",
   "main": "index.js",
   "scripts": {
+    "dev": "npx serve",
     "serve": "npx serve",
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
