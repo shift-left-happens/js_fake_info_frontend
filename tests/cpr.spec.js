@@ -16,7 +16,7 @@ test('generated CPR matches gender rule', async ({ page }) => {
   expect(cpr).toMatch(/^\d{10}$/);
 
   const lastDigit = Number(cpr[cpr.length - 1]);
-  console.log({ cpr, gender });
+  // console.log({ cpr, gender });
 
   if (gender === 'male') {
     expect(lastDigit % 2).toBe(1); // odd
