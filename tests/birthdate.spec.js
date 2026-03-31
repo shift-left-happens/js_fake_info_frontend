@@ -5,6 +5,9 @@ test.describe('Birth date tests', () => {
     let fakePage;
 
     test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+        window.__API_URL__ = 'http://localhost:8081';
+    });
         fakePage = new FakeDataPage(page);
         await fakePage.goto();
     });
