@@ -45,19 +45,21 @@ export class FakeDataPage {
     await this.generateButton.click();
   }
 
-  // Extracts day, month and 2-digit year from the first 6 digits of a CPR number (DDMMYY)
-  extractCprBirthParts(cprText) {
+  // Returns true if the first 6 digits of a CPR number form a valid date (DDMMYY)
+  cprHasValidBirthDate(cprText) {
     const cpr = cprText.trim();
-    return {
-      day: parseInt(cpr.substring(0, 2), 10),
-      month: parseInt(cpr.substring(2, 4), 10),
-      yearShort: parseInt(cpr.substring(4, 6), 10),
-    };
+    const day = parseInt(cpr.substring(0, 2), 10);
+    const month = parseInt(cpr.substring(2, 4), 10);
+    const yearShort = parseInt(cpr.substring(4, 6), 10);
+    return day >= 1 && day <= 31 && month >= 1 && month <= 12 && yearShort >= 0 && yearShort <= 99;
   }
 
-  // Returns true if CPR birth parts (DDMMYY) match a displayed DOB (YYYY-MM-DD)
+  // Returns true if CPR birth date (DDMMYY) matches a displayed DOB (YYYY-MM-DD)
   cprDateMatchesDob(cprText, dobText) {
-    const { day, month, yearShort } = this.extractCprBirthParts(cprText);
+    const cpr = cprText.trim();
+    const day = parseInt(cpr.substring(0, 2), 10);
+    const month = parseInt(cpr.substring(2, 4), 10);
+    const yearShort = parseInt(cpr.substring(4, 6), 10);
     const [year, dobMonth, dobDay] = dobText.trim().split('-').map(Number);
     return day === dobDay && month === dobMonth && year % 100 === yearShort;
   }
