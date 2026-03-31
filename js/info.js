@@ -1,1 +1,1 @@
-export const baseUrl = 'http://localhost:8080';
+export const baseUrl = window.__API_URL__ || 'http://localhost:8080';

@@ -2,6 +2,12 @@
 import { test, expect } from '@playwright/test';
 import { FakeDataPage } from './pages/FakeDataPage.js';
 
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__API_URL__ = 'http://localhost:8081';
+  });
+});
+
 test('generated CPR matches gender rule', async ({ page }) => {
   const fakePage = new FakeDataPage(page);
   await fakePage.goto();

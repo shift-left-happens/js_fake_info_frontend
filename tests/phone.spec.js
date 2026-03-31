@@ -14,6 +14,9 @@ test.describe('Phone number tests', () => {
         785, 786, 788, 789, 826, 827, 829
     ];
     test.beforeEach(async ({ page }) => {
+        await page.addInitScript(() => {
+            window.__API_URL__ = 'http://localhost:8081';
+        });
         fakePage = new FakeDataPage(page);
         await fakePage.goto();
     });
