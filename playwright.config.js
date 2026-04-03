@@ -10,6 +10,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:3000',
     headless: true,
+    screenshot: 'only-on-failure',
   },
   webServer: {
     command: 'npx serve',
