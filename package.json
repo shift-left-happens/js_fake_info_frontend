@@ -7,6 +7,7 @@
     "dev": "npx serve",
     "serve": "npx serve",
     "test": "npx playwright test",
+    "test:update": "npx playwright test --update-snapshots",
     "test:headed": "npx playwright test --headed",
     "test:codegen": "npx playwright codegen http://localhost:3000"
   },
