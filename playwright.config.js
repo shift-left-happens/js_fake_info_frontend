@@ -4,6 +4,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30_000,
   expect: { timeout: 5_000 },
+  reporter: [['html', { open: 'never' }]],
   fullyParallel: true,
   retries: 0,
   use: {
