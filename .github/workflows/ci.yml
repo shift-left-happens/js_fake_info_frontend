@@ -12,6 +12,25 @@ permissions:
   id-token: write
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout frontend
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
   e2e:
     runs-on: ubuntu-latest
 
@@ -51,9 +70,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
-
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
@@ -71,7 +87,7 @@ jobs:
         run: docker compose -f backend/docker-compose.yml -p test down -v
 
   deploy-report:
-    needs: e2e
+    needs: [lint, e2e]
     runs-on: ubuntu-latest
     if: always()
     environment:
